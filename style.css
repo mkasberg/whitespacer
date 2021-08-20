@@ -1,0 +1,42 @@
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Roboto Slab', serif;
+}
+
+.flex-container {
+  display: flex;
+  height: 80%;
+  /*background-color: #7777ff;*/
+}
+
+.button-container {
+  width: 100%;
+}
+
+.action-button {
+  display: block;
+  margin: 20px auto;
+}
+
+.text-container {
+  font-family: 'Roboto Mono', monospace;
+  width: calc(50% - 40px);
+  margin: 20px;
+  height: calc(100% - 40px);
+  font-size: 1.2rem;
+}
+
+#output {
+  background-color: #dddddd;
+  color: #111111;
+}
+
+.whitespace {
+  background-color: #ffaaaa;
+}

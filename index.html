@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto+Slab:wght@600&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+        <h1>Whitespacer</h1>
+
+        <div class="flex-container">
+            <textarea id="input" class="text-container"></textarea>
+            <code id="output" class="text-container"></code>
+        </div>
+        <div class="button-container">
+            <button onclick="transform()" class="action-button">Transform</button>
+        </div>
+    </body>
+
+
+    
+<script>
+substitutions = {};
+substitutions[" "] = "␠";
+substitutions["	"] = "␉";
+substitutions["\n"] = "␊<br/>";
+
+function transformWhitespace(inString) {
+    let result = inString;
+    for (const [key, value] of Object.entries(substitutions)) {
+        substitution = "<span class=\"whitespace\">" + value + "</span>";
+        result = result.replaceAll(key, substitution);
+    }
+    return result;
+}
+
+function transform() {
+    inString = document.getElementById("input").value;
+
+    outString = transformWhitespace(inString);
+    document.getElementById("output").innerHTML = outString;
+}
+</script>
+</html>
