@@ -7,7 +7,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto+Slab:wght@600&display=swap" rel="stylesheet"> 
     </head>
     <body>
-        <h1>Whitespacer</h1>
+        <h1 class="centered">Whitespacer</h1>
+        <p class="centered">Paste any text to see a visual representation of whitespace characters</p>
 
         <div class="flex-container">
             <textarea id="input" class="text-container"></textarea>
@@ -21,15 +22,30 @@
 
     
 <script>
+
+// https://en.wikipedia.org/wiki/Unicode_control_characters
 substitutions = {};
-substitutions[" "] = "␠";
-substitutions["	"] = "␉";
-substitutions["\n"] = "␊<br/>";
+substitutions[" "] = {
+    display: "␠",
+    id: "space"
+};
+substitutions["	"] = {
+    display: "␉",
+    id: "tab"
+};
+substitutions["\n"] = {
+    display: "␊<br/>",
+    id: "line-feed"
+};
+substitutions["\r"] = {
+    display: "␍",
+    id: "carriage-return"
+}
 
 function transformWhitespace(inString) {
     let result = inString;
     for (const [key, value] of Object.entries(substitutions)) {
-        substitution = "<span class=\"whitespace\">" + value + "</span>";
+        substitution = "<a class=\"whitespace\" href=\"characters.html#" + value.id + "\">" + value.display + "</a>";
         result = result.replaceAll(key, substitution);
     }
     return result;
